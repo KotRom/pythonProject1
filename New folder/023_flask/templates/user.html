@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% block title %}User Page{% endblock %}
+
+{% block content %}
+    <h3>Hello {{ user_name }}</h3>
+    <!-- Part of code to output flash messages if there are any -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<!--    <br><p>Please enter your email: </p>-->
+    {% if email == None %}
+        <br><p>Please enter your email:</p>
+    {% else %}
+        <br><p>Is this your email?</p>
+    {% endif %}
+    <form action="#" method="post">
+        <input type="email" name="email" placeholder="Enter email" value="{{ email if email }}">
+        <input type="submit" value="Submit">
+    </form>
+    <p><a href="/delete" style="color:red;">Delete user</a></p>
+{% endblock %}

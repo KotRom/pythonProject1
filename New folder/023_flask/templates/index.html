@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Website made with python</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <!-- {{ <variable> }} is used to print variables in HTML -->
+    <p>{{ name }}</p>
+    <p>{{ r }}</p>
+    <!-- {{% for <var> in <iterable> %}} is a for cycle inside HTML -->
+    {% for x in range(0, 10) %}
+        <!-- {% if <condition> %} is a if statement inside HTML -->
+        {% if x % 2 == 1 %}
+            <p>x</p>
+            <p>{{ x }}</p>
+        <!-- {% endif %} is a must, to stop if statement
+                tabs don't work in HTML -->
+        {% endif %}
+    <!-- {% endfor %} is a must, to stop for cycle
+                tabs don't work in HTML -->
+    {% endfor %}
+    {% for x in content %}
+        <!-- more complex if statement -->
+        {% if x == "roman".capitalize() %}
+        <p>{{ x }} is my name</p>
+        {% elif x == "Mary" %}
+        <p>{{ x }} is a good girl</p>
+        {% else %}
+        <p>{{ x }}</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
