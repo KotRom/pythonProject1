@@ -73,4 +73,6 @@ print("Side b = " + str(side_b))
 print("Side c = " + str(side_c))
 print("Triangle area = " + str(triangle_area))
 
-link = "https://github.com/GammaIntelligenceTraining/Python5"
+#link = "https://github.com/GammaIntelligenceTraining/Python5"
+#dracula theme
+#rainbow
