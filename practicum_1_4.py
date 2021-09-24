@@ -7,3 +7,6 @@ list_n.reverse()
 print(f'Your ReVersed list is {list_n}')
 
 
+test_list = input('Please enter yor list in one string separated by "comma": ').split(', ').
+
+
