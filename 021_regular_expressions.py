@@ -30,7 +30,10 @@ sentence = 'Start a sentence Start and then bring \n it to an end bring'
 #print('\tTab')
 #print(f'\tTab')
 #print(r'\t\nTab') #r' - sytraja stroka
-pattern = re.compile(r'\d\d\d-\d\d\d-[1-35-9]\d\d\d')
+#pattern = re.compile(r'M(rs|r|s)')
+#pattern = re.compile(r'M(rs|r|s)\.? [A-Z](`[A-Z][a-z]*|[a-z]*)')
+pattern = re.compile(r'M(rs|r|s)\.? [A-Z](`[A-Z]\w*|[a-z]*)')
+#pattern = re.compile(r'\d\d\d-\d\d\d-[1-35-9]\d\d\d')
 #pattern = re.compile(r'[abx]')
 #pattern = re.compile(r'[^89]\d\d-\d\d\d-\d\d\d\d')
 #pattern = re.compile(r'[^wh]al')
