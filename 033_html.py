@@ -6,6 +6,6 @@ url = ('https://www.google.com/search?q=rub+to+eur&oq=rub+&aqs=chrome.1.69i57j0i
 r = requests.get(url, headers=headers)
 soup = BS(r.content, 'html.parser')
 conv = soup.find_all('span', class_='DFlfde SwHCTb')
-print(conv, )
+print(conv)
 
 
