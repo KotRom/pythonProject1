@@ -10,6 +10,18 @@ driver = webdriver.Chrome(driver_location)
 driver.get('http://www.gammatest.net')
 driver.maximize_window()
 
-link = driver.find_element('link text', 'Rohkem infot')
-link.click()
+#link = driver.find_element('link text', 'Rohkem infot')
+#link = driver.find_element('partial link text', 'Rohkem')
+#link.click()
+linkk = driver.find_element('partial link text', 'Rohkem')
+linkk.click()
+
+cells = driver.find_elements('tag name', 'td')
+for a in cells:
+    print(a.text)
+
+#for a in link:
+#   a.send_keys(Keys.CONTROL + Keys.RETURN)
+#   time.sleep(3)
+
 
