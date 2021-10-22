@@ -23,7 +23,7 @@ win.resizable(False, False)
 
 def get_squares(number):
     input_field.delete(0, END)
-    input_field.insert(0, int(number ** 2))
+    input_field.insert(0, int(number) ** 2)
 
 input_field = Entry(win, width=50, fg='red', bg='blue', borderwidth=5)
 input_field.pack()
