@@ -10,7 +10,7 @@ class Employee:
 
     @property
     def email(self):
-        f'{self.first.lower()} + '.' + {self.last.lower() + '@company.com'
+        return f'{self.first.lower()}.{self.last.lower()}@company.com'
 
     @property #attribut
     def fullname(self):
@@ -22,5 +22,5 @@ class Employee:
 
 emp1 = Employee('Roman', 'Kotenjov', 2000)
 emp2 = Employee('Mary', 'Gold', 3000)
-{{}}
+print(emp1.email)
 print(emp1.fullname)
