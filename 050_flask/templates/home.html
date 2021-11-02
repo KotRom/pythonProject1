@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %} Home page {% endblock %}
+
+{% block content %}
+
+{% for person in people %}
+    user <b>{{ person }}</b><br>
+
+{% endfor %}
+
+{% endblock %}

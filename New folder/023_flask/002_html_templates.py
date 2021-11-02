@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 '''
 Files needed:
-    home.html
+    home01.html
     index.html
 '''
 
@@ -21,7 +21,7 @@ Files needed:
 @app.route('/home')
 def home_2():
     # first arg is a html file, other are optional variables
-    return render_template("home.html", content="Testing")
+    return render_template("home01.html", content="Testing")
 
 
 # app.run(debug=True) will start server in debug mode
