@@ -1,4 +1,13 @@
 # https://github.com/GammaIntelligenceTraining/Python5
+
+# pip install flask-sqlalchemy
+# pip install pymysql
+# pip install cryptography
+# code comment plugins
+# comment High Lighter plugins
+# Kate AI autocomplete plugins
+
+from flask_sqlalchemy import SQLAlchemy
 import datetime
 
 import flask
@@ -8,7 +17,24 @@ import hashlib
 
 app = Flask(__name__)
 app.secret_key = 'helloworld'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:12345@localhost/flask_test_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.permanent_session_lifetime = timedelta(minutes=10)
+
+db = SQLAlchemy(app)
+
+
+class Users(db.Model):
+    _id = db.Column('id', db.Integer, primary_key=True)
+    name = db.Column('name', db.String(100))
+    password = db.Column('password', db.String(100))
+    email = db.Column('email', db.String(100))
+
+    def __init__(self, name, password, email):
+        self.name = name
+        self.email = email
+        self.password = password
+
 
 @app.route('/')
 def home():
@@ -55,7 +81,9 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('login'))
 
-if __name__ == '__main__':
+
+if __name__ == '__main__':  # proveka chto main window eto main window
+    db.create_all()  # sozdajot vse tablicy v baze dannyh po mpdeli users (bazu nado sozdat' samim)
     app.run(debug=True)
 
 # EmmetEverywhere Plugin for HTML edit
@@ -66,4 +94,3 @@ if __name__ == '__main__':
 
 # BUNDLE v konec body
 # <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
