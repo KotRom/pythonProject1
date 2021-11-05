@@ -1,5 +1,5 @@
 import hashlib
-# hash - odnostoronne shifrivanie password
+# hash - odnostoronne shifrivanie password (podborka hash)
 password = "HelloWorld"
 hashed_pass = hashlib.md5(password.encode()).hexdigest()[0:6]
 
