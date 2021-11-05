@@ -1,5 +1,5 @@
 # https://github.com/GammaIntelligenceTraining/Python5
-
+# pip install flask-
 # pip install flask-sqlalchemy
 # pip install pymysql
 # pip install cryptography
@@ -46,10 +46,31 @@ def login():
     if request.method == 'POST':
         session.permanent = True
         user_name = request.form['nm']
+        user_pass = hashlib.md5(request.form['pw'].encode()).hexdigest()
+        user_in_db = Users.query.filter_by(name=user_name).first()
+        if user_in_db:
+            if user_pass == user_in_db.password:
+                session['user'] = user_name
+                session['email'] = user_in_db.email
+                flash('login successful')
+                return redirect(url_for('user', name=user_name, email=user_in_db.email))
+            else:
+                flash('Wrong password')
+                return render_template('login.html')
+        else:
+            new_user = Users(user_name, user_pass, '')
+            db.session.add(new_user)
+            db.session.commit()
+            session['user'] = user_name
+            session['email'] = ''
+            flash('login successful')
+            return redirect(url_for('user', name=user_name))
+
         session['user'] = user_name
         return redirect(url_for('user', name=user_name))
     else:
         if 'user' in session:
+            flash('Already logged inn')
             return redirect(url_for('user', name=session['user']))
         else:
             return render_template('login.html')
@@ -63,6 +84,10 @@ def user():
         if request.method == 'POST':
             email = request.form['em']
             session['email'] = email
+            user_in_db = Users.query.filter_by(name=user_name).first()
+            user_in_db.email = email
+            flash('email was saved')
+            db.session.commit()
         else:
             if 'email' in session:
                 email = session['email']
@@ -70,6 +95,7 @@ def user():
                 email = ''
         return render_template('user.html', name=user_name, email=email)
     else:
+        flash('you are not logged inn')
         return redirect(url_for('login'))
 
 
@@ -77,9 +103,24 @@ def user():
 def logout():
     if 'user' in session:
         user_name = session['user']
-    session.pop('user', None)
-    session.pop('email', None)
+        session.pop('user', None)
+        session.pop('email', None)
+        flash('logged out')
     return redirect(url_for('login'))
+
+
+@app.route('/delete')
+def delete():
+    if 'user' in session:
+        user_name = session['user']
+        user_in_db = Users.query.filter_by(name=user_name).delete()
+        db.session.commit()
+        session.pop('user', None)
+        session.pop('email', None)
+        flash('account was deleted')
+        return redirect(url_for('login'))
+    else:
+        pass
 
 
 if __name__ == '__main__':  # proveka chto main window eto main window

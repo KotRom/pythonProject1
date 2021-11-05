@@ -1,0 +1,16 @@
+body {
+background-color: #333333;
+color: #FFFFFF;
+}
+
+#name-tag{
+color: red;
+}
+
+#log-tag{
+color: blue;
+}
+
+#python-img{
+width: 200px;
+}
