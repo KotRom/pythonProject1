@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %} LOGIN page {% endblock %}
+{% block title %}Home Page{% endblock %}
 {% block content %}
-<br>
 <form action="#" method="post">
-    <p>PLease input your NAME:</p>
-    <input type="text" name="nm">
-    <input type="submit" value="Add name">
+    <p>Name:</p>
+    <p><input type="text" name="nm"></p>
+    <p>Password:</p>
+    <p><input type="password" name="pw"></p>
+    <p><input type="submit" value="Submit"></p>
 </form>
-
 {% endblock %}
